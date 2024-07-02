@@ -118,7 +118,6 @@
   };
 
   environment.systemPackages = [
-    pkgs.vim
     pkgs.ack
     pkgs.wget
     pkgs.docker
@@ -133,6 +132,13 @@
     pkgs.screen
     pkgs.age
     pkgs.gnumake
+    
+    pkgs.python3
+    pkgs.nodejs
+    pkgs.unzip
+
+    pkgs.neovim
+    pkgs.gcc
 
     pkgs.devenv
   ];
