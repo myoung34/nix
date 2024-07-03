@@ -13,5 +13,6 @@ in
 {
   "secrets.nix".publicKeys = [ local myoung34github1 myoung34github2 myoung34github3 system1 system2 ];
   "workspace_wifi.age".publicKeys = [ local myoung34github1 myoung34github2 myoung34github3 system1 system2 ];
-  "secret2.age".publicKeys = users ++ systems;
+  "github.age".publicKeys = [ local myoung34github1 myoung34github2 myoung34github3 system1 system2 ];
+  #"secret2.age".publicKeys = users ++ systems;
 }

@@ -58,8 +58,14 @@
             system.stateVersion = "24.05";
             wsl.enable = true;
             age.secrets = {
+              github = {
+                file = ./secrets/github.age;
+              };
             };
-            age.identityPaths = [ "/home/myoung/.ssh/github" ];
+            age.identityPaths = [
+              "/home/myoung/.ssh/github"
+              "/etc/ssh/ssh_host_rsa_key"
+            ];
           }
           ./nixos/desktop-wsl.nix
           ./nixos/configuration.nix

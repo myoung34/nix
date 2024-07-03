@@ -118,6 +118,7 @@
   };
 
   environment.systemPackages = [
+    pkgs.vim
     pkgs.ack
     pkgs.wget
     pkgs.docker
