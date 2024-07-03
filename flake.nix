@@ -60,10 +60,13 @@
             age.secrets = {
               github = {
                 file = ./secrets/github.age;
+                mode = "400";
+                owner = "myoung";
+                group = "root";
               };
             };
             age.identityPaths = [
-              "/home/myoung/.ssh/github"
+              "/run/agenix/github"
               "/etc/ssh/ssh_host_rsa_key"
             ];
           }
@@ -91,7 +94,10 @@
                 file = ./secrets/workspace_wifi.age;
               };
             };
-            age.identityPaths = [ "/etc/ssh/ssh_host_rsa_key" ];
+            age.identityPaths = [
+              "/run/agenix/github"
+              "/etc/ssh/ssh_host_rsa_key"
+            ];
           }
         ];
       };
