@@ -153,6 +153,7 @@
 
     # For dev stuff
     pkgs.devenv
+    pkgs.tenv
 
     pkgs.jq
   ];
