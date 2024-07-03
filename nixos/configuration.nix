@@ -151,9 +151,10 @@
     pkgs.neovim
     pkgs.gcc
 
+    # For dev stuff
     pkgs.devenv
-    pkgs.aws-vault
-    pkgs.awscli
+
+    pkgs.jq
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
