@@ -101,9 +101,19 @@
 
 
   programs = {
+    tmux = {
+      enable = false;
+    };
     zsh = {
       enable = true;
       interactiveShellInit= ''
+      ZSH_THEME="robbyrussell"
+
+      plugins=(
+        git
+        tmux
+      )
+
       if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
         ZSH_TMUX_AUTOSTART=false
       else
@@ -112,11 +122,6 @@
       '';
       ohMyZsh = {
         enable = true;
-        theme = "robbyrussell";
-        plugins = [
-          "git"
-          "tmux"
-        ];
       };
     };
   };
