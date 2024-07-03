@@ -71,7 +71,6 @@
 
   i18n.defaultLocale = "en_US.UTF-8";
 
-  services.tailscale.enable = true;
   services.keybase.enable = true;
   services.kbfs.enable = true;
   services.pcscd.enable = true;

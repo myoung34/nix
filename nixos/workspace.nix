@@ -33,6 +33,8 @@
   hardware.pulseaudio.enable = true;
 
   services.displayManager.defaultSession = "none+i3";
+  services.tailscale.enable = true;
+
   services.xserver = {
     enable = true;
     xkb = {
