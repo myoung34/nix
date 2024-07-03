@@ -75,6 +75,7 @@
   services.keybase.enable = true;
   services.kbfs.enable = true;
   services.pcscd.enable = true;
+  services.openssh.enable = true; # even on WSL so that I can generate host keys
 
   users.defaultUserShell=pkgs.zsh;
   users.users.myoung = {
@@ -102,24 +103,27 @@
   programs = {
     zsh = {
       enable = true;
-      autosuggestions.enable = true;
-      zsh-autoenv.enable = true;
-      syntaxHighlighting.enable = true;
+      interactiveShellInit= ''
+      if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+        ZSH_TMUX_AUTOSTART=false
+      else
+        ZSH_TMUX_AUTOSTART=true
+      fi
+      '';
       ohMyZsh = {
         enable = true;
         theme = "robbyrussell";
         plugins = [
           "git"
-          "history"
+          "tmux"
         ];
       };
     };
-
   };
 
   environment.systemPackages = [
     pkgs.vim
-    pkgs.ack
+    pkgs.ripgrep
     pkgs.wget
     pkgs.docker
     pkgs.age-plugin-yubikey
@@ -127,6 +131,7 @@
     pkgs.pinentry
     pkgs.pinentry-curses
     pkgs.git
+    pkgs.tmux
     pkgs.tree
     pkgs.bind
     pkgs.zsh
@@ -142,6 +147,8 @@
     pkgs.gcc
 
     pkgs.devenv
+    pkgs.aws-vault
+    pkgs.awscli
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

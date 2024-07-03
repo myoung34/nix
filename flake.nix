@@ -64,6 +64,12 @@
                 owner = "myoung";
                 group = "root";
               };
+              aws = {
+                file = ./secrets/home_aws.age;
+                mode = "400";
+                owner = "myoung";
+                group = "root";
+              };
             };
             age.identityPaths = [
               "/run/agenix/github"
@@ -92,6 +98,18 @@
             age.secrets = {
               wifi = {
                 file = ./secrets/workspace_wifi.age;
+              };
+              github = {
+                file = ./secrets/github.age;
+                mode = "400";
+                owner = "myoung";
+                group = "root";
+              };
+              aws = {
+                file = ./secrets/home_aws.age;
+                mode = "400";
+                owner = "myoung";
+                group = "root";
               };
             };
             age.identityPaths = [

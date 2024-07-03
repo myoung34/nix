@@ -32,8 +32,6 @@
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
-  services.openssh.enable = true;
-
   services.displayManager.defaultSession = "none+i3";
   services.xserver = {
     enable = true;
