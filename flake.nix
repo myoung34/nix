@@ -85,14 +85,11 @@
         modules = [
           ./nixos/configuration.nix
           ./nixos/workspace.nix
+          ./nixos/i3.nix
           agenix.nixosModules.default
           {
             environment.systemPackages = [ 
               agenix.packages.x86_64-linux.default 
-              nixpkgs.legacyPackages.x86_64-linux.lightdm-gtk-greeter
-              nixpkgs.legacyPackages.x86_64-linux.wl-clipboard
-              nixpkgs.legacyPackages.x86_64-linux.htop
-              nixpkgs.legacyPackages.x86_64-linux.keybase-gui
               inputs.browser-previews.packages.x86_64-linux.google-chrome
             ];
             age.secrets = {
@@ -115,6 +112,38 @@
             age.identityPaths = [
               "/run/agenix/github"
               "/etc/ssh/ssh_host_rsa_key"
+            ];
+          }
+        ];
+      };
+      chromebook_vm = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          ./nixos/configuration.nix
+          ./nixos/chromebook_vm.nix
+          ./nixos/i3.nix
+          agenix.nixosModules.default
+          {
+            environment.systemPackages = [ 
+              agenix.packages.x86_64-linux.default 
+            ];
+            age.secrets = {
+              github = {
+                file = ./secrets/github.age;
+                mode = "400";
+                owner = "myoung";
+                group = "root";
+              };
+              aws = {
+                file = ./secrets/home_aws.age;
+                mode = "400";
+                owner = "myoung";
+                group = "root";
+              };
+            };
+            age.identityPaths = [
+              "/run/agenix/github"
+              "/etc/ssh/ssh_host_ed25519_key"
             ];
           }
         ];

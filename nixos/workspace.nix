@@ -4,6 +4,17 @@
     ./workspace-hardware-configuration.nix
   ];
 
+  services.tailscale.enable = true;
+
+  sound.enable = true;
+  hardware.pulseaudio.enable = true;
+
+  services.xserver = {
+    enable = true;
+    xkb = {
+      options = "ctrl:swapcaps";
+    };
+  };
 
   networking = {
     #networkmanager.enable = true;  # Easiest to use and most distros use this by default.
@@ -20,45 +31,6 @@
           '';
         };
       };
-    };
-  };
-
-  console = {
-    font = "Lat2-Terminus16";
-    useXkbConfig = true; # use xkb.options in tty.
-  };
-
-
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
-
-  services.displayManager.defaultSession = "none+i3";
-  services.tailscale.enable = true;
-
-  services.xserver = {
-    enable = true;
-    xkb = {
-      layout = "us";
-      options = "ctrl:swapcaps";
-    };
-    desktopManager = {
-      xterm.enable = false;
-    };
-
-    windowManager.i3 = {
-      enable = true;
-      extraPackages = with pkgs; [
-        dmenu
-        i3status
-        i3lock
-        git
-        go
-        llvm_12 # following for trying libbpfgo
-        gnumake
-        clang
-        libbpf
-        libelf
-      ];
     };
   };
 }
