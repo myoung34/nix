@@ -6,6 +6,19 @@ Its dirty, but I'm learning.
 
 ### Notes
 
+### Chromebook VM
+
+To get bridged networking to work:
+
+```
+$ sudo ip link add name br0 type bridge
+$ sudo ip link set dev br0 up
+$ sudo ip link set eth0 master br0
+$ sudo chmod 666 /dev/net/tun
+$ sudo chown root:myoung /dev/net/tun 
+```
+then use `br0` as the bridge device
+
 ### WSL2
 
 1: download the latest `nixos-wsl.tar.gz` from [here](https://github.com/nix-community/NixOS-WSL/releases)
