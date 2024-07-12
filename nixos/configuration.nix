@@ -85,6 +85,8 @@
       tldr
       chezmoi
       mise
+      nomad
+      awscli
     ];
   };
 
