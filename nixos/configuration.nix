@@ -145,6 +145,8 @@
     pkgs.age
     pkgs.gnumake
     
+    pkgs.mosquitto
+    
     pkgs.python3
     pkgs.nodejs
     pkgs.unzip
